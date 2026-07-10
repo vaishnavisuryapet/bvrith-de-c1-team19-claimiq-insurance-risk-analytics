@@ -6,7 +6,7 @@
 **Program:** ZENAIZ x BVRIT Hyderabad Data Engineering Internship Program  
 **Track:** Data Engineering  
 **Duration:** 12 Weeks  
-**Team:** 19 /  
+**Team:** 19  
 **Students:** Meenakshi Reddy Reddibathuni, Suryapeta Vaishnavi, Gayathri Indukuri, Talari Dhanalaxmi  
 **AI Teammate:** Used responsibly for explanation, debugging, review, and documentation support.
 
