@@ -2,8 +2,8 @@
 
 **Week:** 1  
 **Date range:** [Add dates]  
-**Team:** [Team name / number]  
-**Project:** [Project title]
+**Team:** 19
+**Project:** claimIQ- insurance risk analytics.
 
 ---
 
