@@ -2,7 +2,7 @@
 
 **Week:** 1  
 **Date range:** [Add dates]  
-**Team:** 19
+**Team:** 19.
 **Project:** claimIQ- insurance risk analytics.
 
 ---
