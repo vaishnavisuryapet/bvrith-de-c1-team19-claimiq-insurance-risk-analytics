@@ -7,7 +7,7 @@
 **Track:** Data Engineering  
 **Duration:** 12 Weeks  
 **Team:** 19  
-**Students:** Meenakshi Reddy Reddibathuni, Suryapeta Vaishnavi, Gayathri Indukuri, Talari Dhanalaxmi  
+**Students:** Abhigna Voddati, Suryapeta Vaishnavi, Gayathri Indukuri.  
 **AI Teammate:** Used responsibly for explanation, debugging, review, and documentation support.
 
 ---
