@@ -1,77 +1,74 @@
 # Problem Charter
 
 **Week:** 1  
-**Owner(s):** [Student names]  
-**Project:** [Project title]
+**Owner(s):** Team 19  
+**Project:** ClaimIQ – Insurance Risk Analytics
 
 ---
 
 ## 1. Problem Context
 
-Explain the domain in simple language.
+The insurance industry processes thousands of policy applications and claim requests every day. Insurance companies need to assess the level of risk associated with each customer and identify claims that may require further investigation.
 
-Prompts:
+The project uses insurance-related data such as customer demographics, policy details, claim history, vehicle information, medical records (where applicable), and claim amounts. Since this data comes from multiple sources and may contain missing values, duplicates, and inconsistencies, it must be cleaned and standardized before analysis.
 
-- What real-world process or operation does this project represent?
-- What kinds of data are generated?
-- Why is raw data not enough?
-- Who would use the final dashboard or metrics?
+The final dashboard and analytics will help insurance managers, risk analysts, and business executives monitor claim trends, evaluate customer risk, detect anomalies, and support data-driven decision-making.
 
 ---
 
 ## 2. Engineering Problem
 
-Write the data engineering problem clearly.
-
-Example format:
-
-> The project must convert multiple raw source files into trusted Bronze, Silver, Data Quality, Gold, and dashboard-ready outputs using Databricks and Power BI.
+The project must convert raw insurance policy and claims datasets into trusted Bronze, Silver, Data Quality, Gold, and dashboard-ready outputs using Databricks and Power BI. The pipeline should clean, validate, transform, and aggregate data to produce reliable risk analytics and business insights.
 
 ---
 
 ## 3. Users / Stakeholders
 
 | User / Stakeholder | What they need from the data |
-|---|---|
-| [Example: Operations Head] | [Example: View daily demand and service issues] |
-| [Example: Analyst] | [Example: Compare trends and investigate failures] |
+|--------------------|------------------------------|
+| Insurance Risk Analyst | Analyze customer risk and identify high-risk policies |
+| Claims Manager | Monitor claim approvals, fraud indicators, and claim trends |
+| Business Executive | View KPIs, claim costs, and business performance |
+| Data Engineer | Build and maintain reliable data pipelines |
 
 ---
 
 ## 4. Scope Inclusions
 
-List what the team will build.
+The team will build:
 
-- Raw source files
-- Bronze ingestion
-- Silver standardization
-- Data quality checks
-- Gold metrics
-- Power BI dashboard
-- Streaming simulation
-- GitHub evidence
+- Raw insurance dataset ingestion
+- Bronze layer for raw data storage
+- Silver layer for cleaned and standardized data
+- Data Quality validation checks
+- Gold layer containing business metrics
+- Power BI dashboard for visualization
+- Streaming simulation for incoming claim records
+- GitHub repository with weekly documentation and project evidence
 
 ---
 
 ## 5. Scope Exclusions
 
-List what the team will not build.
+The team will **not** build:
 
-Examples:
-
-- No production application
-- No real customer data
-- No payment gateway integration
-- No copied internet project submission
-- No fake screenshots or unexplained AI-generated work
+- A production-ready insurance application
+- Real customer or confidential insurance data
+- Online policy purchasing or payment gateway integration
+- Mobile application development
+- AI-generated work without verification
+- Fake datasets, screenshots, or copied project submissions
 
 ---
 
 ## 6. Success Criteria
 
-By the end of 12 weeks, the project is successful if:
+By the end of 12 weeks, the project will be successful if:
 
-- The pipeline can be explained end to end.
-- The team can show Bronze, Silver, DQ, Gold, dashboard, and streaming evidence.
-- All three students can explain the full project at a high level.
-- GitHub contains weekly evidence and final submission files.
+- The complete data pipeline can be demonstrated from Bronze to Gold.
+- Data quality checks are implemented and documented.
+- Gold layer provides meaningful insurance risk metrics.
+- Power BI dashboard displays interactive business insights.
+- Streaming simulation successfully processes new claim records.
+- Every team member can explain the architecture and workflow.
+- GitHub repository contains weekly sprint logs, documentation, source code, notebooks, dashboards, and the final project submission.
