@@ -1,98 +1,95 @@
 # ClaimIQ: Insurance Risk Analytics
 
-> **Student note:** Start with `00_START_HERE.md` and `00_TEMPLATE_INDEX.md`. The placeholder files inside this repo are the templates.
-
+> **Student Note:** Start with `00_START_HERE.md` and `00_TEMPLATE_INDEX.md`. The placeholder files inside this repository serve as templates for the project.
 
 **Program:** ZENAIZ x BVRIT Hyderabad Data Engineering Internship Program  
 **Track:** Data Engineering  
 **Duration:** 12 Weeks  
 **Team:** 19  
-**Students:** Abhigna Voddati, Suryapeta Vaishnavi, Gayathri Indukuri.  
-**AI Teammate:** Used responsibly for explanation, debugging, review, and documentation support.
+**Students:** Abhigna Voddati, Suryapeta Vaishnavi, Gayathri Indukuri  
+**AI Teammate:** Used responsibly for explanation, debugging, documentation support, and code review. All AI-generated content was manually verified before implementation.
 
 ---
 
-## 1. Project Summary
+# 1. Project Summary
 
-Write 5–8 lines explaining the assigned project.
-
-Example structure:
-
-- **Domain:** [Urban Mobility / IPL Matchday / Weather / etc.]
-- **Core engineering problem:** [What raw data needs to become trusted insight?]
-- **Main pipeline:** Raw Sources → Bronze → Silver → Data Quality → Gold → Power BI → Streaming Simulation
-- **Final outcome:** GitHub repo, Databricks notebooks, Gold outputs, Power BI dashboard, streaming simulation, final demo.
+- **Domain:** Insurance Risk Analytics
+- **Core Engineering Problem:** Insurance companies collect large volumes of policyholder and claim data from multiple sources. This raw data often contains inconsistencies, duplicates, and missing values, making it unsuitable for direct analysis. The project transforms this data into reliable, analytics-ready datasets.
+- **Main Pipeline:** Raw Insurance Data → Bronze → Silver → Data Quality → Gold → Power BI Dashboard → Streaming Simulation
+- **Final Outcome:** A complete end-to-end data engineering pipeline built using Databricks, producing trusted Gold datasets, interactive Power BI dashboards, streaming claim event simulations, and comprehensive GitHub documentation with weekly evidence.
 
 ---
 
-## 2. Tools Used
+# 2. Tools Used
 
 | Tool | Purpose |
-|---|---|
-| Databricks Free Edition | Spark SQL notebooks, light Python/PySpark, Bronze/Silver/Gold tables, streaming simulation |
-| GitHub | Repository, weekly evidence, documentation, screenshots, commits |
-| Power BI Desktop | Dashboard from Gold outputs |
-| AI Assistant | Explanation, debugging, review, documentation support with manual verification |
+|------|---------|
+| Databricks Community Edition | Build Spark SQL and PySpark notebooks for Bronze, Silver, Gold, Data Quality, and Streaming |
+| Apache Spark | Large-scale data processing and transformations |
+| Python (Pandas & PySpark) | Data cleaning, preprocessing, and feature engineering |
+| GitHub | Version control, documentation, sprint logs, and project evidence |
+| Power BI Desktop | Dashboard creation and visualization using Gold datasets |
+| AI Assistant | Documentation support, debugging, explanation, and code review with manual verification |
 
 ---
 
-## 3. Repository Navigation
+# 3. Repository Navigation
 
 | Folder / File | Purpose |
-|---|---|
-| `docs/` | Project documentation, data dictionary, DQ summary, Gold metric definitions |
-| `src/` | Data generation and reusable quality helper scripts |
-| `notebooks/` | Databricks notebooks for exploration, Bronze, Silver, DQ, Gold, export, streaming |
-| `data_sample/` | Small sample raw/streaming data only; do not store large files |
-| `dashboard/` | Power BI `.pbix` file and dashboard notes |
-| `streaming/` | Streaming design, JSON event schema, Kafka-style design awareness |
-| `screenshots/` | Weekly evidence screenshots |
-| `weekly_logs/` | Weekly execution logs and AI transparency notes |
-| `final_submission/` | Final report, demo script, team contribution, checklist |
+|--------------|---------|
+| `docs/` | Project documentation, problem charter, data dictionary, references, DQ summary |
+| `src/` | Data generation scripts, preprocessing utilities, helper functions |
+| `notebooks/` | Databricks notebooks for exploration, Bronze, Silver, Data Quality, Gold, export, and streaming |
+| `data_sample/` | Sample insurance datasets for testing |
+| `dashboard/` | Power BI dashboard (.pbix) and dashboard documentation |
+| `streaming/` | Streaming architecture, JSON schema, streaming simulation notebooks |
+| `screenshots/` | Weekly implementation screenshots and evidence |
+| `weekly_logs/` | Weekly sprint logs and AI transparency reports |
+| `final_submission/` | Final report, presentation, demo script, and contribution document |
 
 ---
 
-## 4. 12-Week Execution Map
+# 4. 12-Week Execution Map
 
 | Week | Focus | Main Evidence |
-|---:|---|---|
-| 1 | Project framing + GitHub | README, problem charter, Week 1 log |
-| 2 | Dataset design | Data dictionary, assumptions, sample data plan |
-| 3 | Databricks exploration | Exploration notebook, schema/count screenshots |
-| 4 | Bronze ingestion | Bronze notebook, raw-to-Bronze reconciliation |
-| 5 | Silver standardization | Silver notebook, canonical mapping evidence |
-| 6 | Data quality | DQ rules, DQ notebook, DQ summary |
-| 7 | Gold metrics | Gold tables and metric definitions |
-| 8 | Power BI draft | Gold export and first dashboard draft |
-| 9 | Dashboard refinement | Final dashboard screenshots and insights |
-| 10 | Streaming simulation | Auto Loader / Structured Streaming notebook and live metric |
-| 11 | Integration | Pipeline walkthrough, cleaned README, final evidence |
-| 12 | Final demo | Final report, demo script, contribution note |
+|------|-------|---------------|
+| 1 | Project planning and GitHub setup | README, Problem Charter, Sprint Log |
+| 2 | Insurance dataset design | Data Dictionary, ER Diagram, Sample Dataset |
+| 3 | Databricks data exploration | Exploration notebook, schema screenshots |
+| 4 | Bronze layer implementation | Bronze notebook, raw data ingestion |
+| 5 | Silver layer implementation | Cleaned and standardized datasets |
+| 6 | Data Quality validation | DQ notebook, validation report |
+| 7 | Gold layer creation | Business metrics and aggregated tables |
+| 8 | Power BI dashboard development | Initial dashboard and Gold export |
+| 9 | Dashboard enhancement | Final dashboard and business insights |
+| 10 | Streaming simulation | Structured Streaming notebook and live updates |
+| 11 | Pipeline integration | Complete workflow demonstration |
+| 12 | Final project submission | Final report, demo, GitHub repository |
 
 ---
 
-## 5. Important Rules
+# 5. Important Rules
 
-- Do not connect Power BI directly to raw CSV files. Power BI must use Gold outputs.
-- Do not submit copied internet GitHub repositories as your own project.
-- External references must be listed in `docs/references.md`.
-- AI-generated code or content must be verified and explainable.
-- Every week must have a GitHub commit and weekly log.
-- Keep sample data small in GitHub. Large generated data should be recreated using scripts or uploaded to Databricks separately.
+- Power BI dashboards will be built only from Gold datasets.
+- The project will use publicly available sample insurance data only.
+- Any external references will be documented in `docs/references.md`.
+- AI-generated code and documentation will always be manually reviewed and verified.
+- Every sprint will include GitHub commits, documentation, and supporting screenshots.
+- Large datasets will remain outside GitHub and will be recreated using scripts when necessary.
 
 ---
 
-## 6. Final Project Proof
+# 6. Final Project Proof
 
-By Week 12, this repository should prove:
+By the end of Week 12, this repository will demonstrate that:
 
-- We designed source datasets.
-- We processed batch data in Databricks.
-- We created Bronze tables.
-- We standardized Silver tables.
-- We implemented data quality checks.
-- We created Gold metric tables.
-- We built Power BI dashboards from Gold outputs.
-- We simulated streaming JSON events.
-- We documented weekly evidence in GitHub.
-- We can explain and defend the full project.
+- Source insurance datasets were collected and documented.
+- Batch data was processed using Databricks and Apache Spark.
+- Bronze tables were created from raw insurance data.
+- Silver tables were standardized and cleaned.
+- Data Quality rules were implemented and validated.
+- Gold tables containing business metrics were generated.
+- Interactive Power BI dashboards were built using Gold datasets.
+- Insurance claim events were simulated using Structured Streaming.
+- Weekly progress, documentation, and evidence were maintained in GitHub.
+- Every team member can explain the complete end-to-end data engineering pipeline.
