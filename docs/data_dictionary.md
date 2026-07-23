@@ -1,7 +1,7 @@
 # Data Dictionary
 
 **Week:** 2  
-**Purpose:** Define raw, reference, Silver, and streaming fields.
+**Purpose:** Define the raw insurance claims dataset, reference data, Silver layer schema, and streaming event structure for the ClaimIQ: Insurance Risk Analytics project.
 
 ---
 
@@ -9,27 +9,38 @@
 
 | File Name | Grain | Purpose | Approx. Rows | Notes |
 |---|---|---|---:|---|
-| `[source_file_1].csv` | One row per [entity/event] | [Purpose] | [rows] | [notes] |
-| `[source_file_2].csv` | One row per [entity/event] | [Purpose] | [rows] | [notes] |
-| `[reference_file].csv` | One row per [reference item] | [Purpose] | [rows] | [notes] |
-| `[streaming_events].json` | One row per event | Streaming simulation | [rows] | JSON event files |
+| `insurance_claims.csv` | One row per insurance claim | Raw insurance claims data | 10,000+ | Main source dataset |
+| `policy_details.csv` | One row per policy | Policy information | 5,000+ | Joined using Policy ID |
+| `customer_details.csv` | One row per customer | Customer demographic details | 5,000+ | Joined using Customer ID |
+| `claim_events.json` | One row per claim event | Streaming simulation of claim events | 2,000+ | JSON event files |
 
 ---
 
-## 2. Raw File Schema: `[source_file_1].csv`
+## 2. Raw File Schema: `insurance_claims.csv`
 
 | Field Name | Data Type | Required? | Example | Description |
 |---|---|---|---|---|
-| `source_id` | string | Yes | `SRC-0001` | Unique source record ID |
-| `[field_name]` | string | Yes/No | `[example]` | [description] |
+| `claim_id` | string | Yes | `CLM-1001` | Unique claim identifier |
+| `customer_id` | string | Yes | `CUS-2105` | Customer identifier |
+| `policy_id` | string | Yes | `POL-4501` | Insurance policy ID |
+| `claim_date` | date | Yes | `2026-07-10` | Date claim was submitted |
+| `claim_amount` | decimal | Yes | `45000.00` | Amount requested by customer |
+| `claim_status` | string | Yes | `Approved` | Current claim status |
+| `claim_type` | string | Yes | `Vehicle` | Type of insurance claim |
+| `region` | string | No | `Hyderabad` | Customer region |
+| `fraud_flag` | boolean | No | `False` | Fraud indicator |
 
 ---
 
-## 3. Raw File Schema: `[source_file_2].csv`
+## 3. Raw File Schema: `policy_details.csv`
 
 | Field Name | Data Type | Required? | Example | Description |
 |---|---|---|---|---|
-| `source_id` | string | Yes | `SRC2-0001` | Unique source record ID |
+| `policy_id` | string | Yes | `POL-4501` | Unique policy identifier |
+| `policy_type` | string | Yes | `Comprehensive` | Insurance policy category |
+| `premium_amount` | decimal | Yes | `12000.00` | Annual premium amount |
+| `policy_start_date` | date | Yes | `2025-01-01` | Policy start date |
+| `policy_end_date` | date | Yes | `2026-01-01` | Policy expiry date |
 
 ---
 
@@ -37,7 +48,11 @@
 
 | Field Name | Data Type | Required? | Example | Description |
 |---|---|---|---|---|
-| `reference_id` | string | Yes | `REF-001` | Reference key |
+| `customer_id` | string | Yes | `CUS-2105` | Customer identifier |
+| `customer_name` | string | Yes | `Rahul Sharma` | Customer name |
+| `age` | integer | Yes | `35` | Customer age |
+| `gender` | string | Yes | `Male` | Customer gender |
+| `city` | string | No | `Hyderabad` | Customer location |
 
 ---
 
@@ -46,14 +61,21 @@
 Final Silver table name:
 
 ```text
-silver_[project_specific_table_name]
+silver_insurance_claims
 ```
 
 | Silver Field | Data Type | Source Mapping | Business Meaning |
 |---|---|---|---|
-| `record_id` | string | `[source field]` | Canonical record ID |
-| `event_date` | date | `[source field]` | Date used for analytics |
-| `[silver_field]` | [type] | [mapping] | [meaning] |
+| `claim_id` | string | insurance_claims.claim_id | Unique claim ID |
+| `customer_id` | string | insurance_claims.customer_id | Customer identifier |
+| `policy_id` | string | insurance_claims.policy_id | Policy identifier |
+| `claim_date` | date | insurance_claims.claim_date | Claim submission date |
+| `claim_amount` | decimal | insurance_claims.claim_amount | Requested claim amount |
+| `premium_amount` | decimal | policy_details.premium_amount | Policy premium |
+| `claim_status` | string | insurance_claims.claim_status | Approval status |
+| `claim_type` | string | insurance_claims.claim_type | Type of insurance claim |
+| `fraud_flag` | boolean | insurance_claims.fraud_flag | Fraud indicator |
+| `region` | string | insurance_claims.region | Customer region |
 
 ---
 
@@ -61,6 +83,12 @@ silver_[project_specific_table_name]
 
 | Field Name | Data Type | Required? | Example | Description |
 |---|---|---|---|---|
-| `event_id` | string | Yes | `EVT-0001` | Unique event ID |
-| `event_timestamp` | timestamp | Yes | `2026-07-03T10:15:00+05:30` | Event time |
-| `event_type` | string | Yes | `[event type]` | Event category |
+| `event_id` | string | Yes | `EVT-1001` | Unique event ID |
+| `event_timestamp` | timestamp | Yes | `2026-07-10T10:15:00+05:30` | Event timestamp |
+| `event_type` | string | Yes | `Claim Submitted` | Type of claim event |
+| `claim_id` | string | Yes | `CLM-1001` | Related claim |
+| `customer_id` | string | Yes | `CUS-2105` | Customer identifier |
+| `claim_status` | string | Yes | `Pending` | Current claim status |
+| `claim_amount` | decimal | Yes | `45000.00` | Claim amount |
+| `processing_stage` | string | Yes | `Verification` | Current processing stage |
+| `fraud_score` | decimal | No | `0.18` | Fraud risk score generated by analytics |
