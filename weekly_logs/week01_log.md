@@ -22,7 +22,7 @@ The goal of this sprint was to understand the problem of insurance risk analytic
 | Dataset collection | Team 19 | Done | Dataset |
 | GitHub repository created | Team 19 | Done | GitHub repository |
 | Initial project structure setup | Team 19 | Done | Repository files |
-| Literature review | Team 19 | In Progress | Research papers |
+| Literature review | Team 19 | Done | Research papers |
 
 ---
 
