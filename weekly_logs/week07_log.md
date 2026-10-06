@@ -21,7 +21,7 @@ Finalize and validate the Gold-layer tables using the cleaned Silver data. Prepa
 | Created business-ready Gold tables         | [Student] | Done               | Gold tables in Databricks        |
 | Created claim and policy summary metrics   | [Student] | Done               | Databricks notebook              |
 | Validated Gold-table records and metrics   | [Student] | Done               | Validation queries / screenshots |
-| Prepared Gold data for Power BI            | [Student] | Done / In progress | Power BI dataset / screenshot    |
+| Prepared Gold data for Power BI            | [Student] | Done               | Power BI dataset / screenshot    |
 | Reviewed insurance risk-related metrics    | [Student] | In progress        | Analysis notebook                |
 | Updated project documentation              | [Student] | Done               | GitHub repository                |
 
