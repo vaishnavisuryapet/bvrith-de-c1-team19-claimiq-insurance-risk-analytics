@@ -1,50 +1,155 @@
-# Dashboard Insights
-
+# ClaimIQ Dashboard Insights
 **Week:** 9
-**Purpose:** Explain what the Power BI dashboard shows.
+
+
+## Purpose
+
+This document records evidence-backed observations from the Week 9 ClaimIQ Power BI dashboard refinement. Each insight is traceable to the owning Gold table and the corresponding dashboard visual.
 
 ---
 
-## 1. Dashboard Pages
+## Insight 1 — Claims and Approved Amount by Product
 
-| Page                              | Purpose                                                                | Main Visuals                                             |
-| --------------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------- |
-| Page 1: Claims & Product Overview | Shows overall claim performance, product analysis and approval metrics | KPI cards, bar charts, line chart, slicers               |
-| Page 2: Payment & Risk Analysis   | Shows payment performance, claims paid and payment method analysis     | KPI cards, bar charts, line charts, donut chart, slicers |
+### Question / Decision
+Which products contribute the largest claim volumes and approved amounts?
+
+### Observation
+The Claims Operations Overview page shows differences in claim volume and approved amount across products. The product-level visuals allow users to compare claim frequency with the corresponding approved amount.
+
+### Filter / Time Scope
+Default dashboard scope using the full available Gold data.
+
+### Visual / Page
+- Page: Claims Operations Overview
+- Visuals: Claims by Product; Requested vs Approved Amount by Product
+
+### Owning Gold Table
+`gold_claims_product_monthly_summary`
+
+### Measure / Field
+- `claim_count`
+- `total_approved_amount`
+- `product_name`
+
+### Evidence
+The product-level values are sourced directly from the Gold claims product monthly summary and reconcile to the validated Gold baseline.
+
+### Interpretation
+Product-level differences can help operations teams identify products with higher claim activity and compare requested versus approved financial exposure.
+
+### Limitation
+The dashboard does not establish that a product is higher risk solely because it has more claims or a higher approved amount. Product mix, exposure and business volume should be considered before making operational decisions.
 
 ---
 
-## 2. Key Insights
+## Insight 2 — Settlement Performance and SLA Compliance
 
-Write 5–8 insights from the dashboard.
+### Question / Decision
+Which products show stronger or weaker settlement performance against their SLA targets?
 
-1. The dashboard shows **499 total claims** and **157 settled claims**.
-2. The total requested claim amount is **120.72M**, while the total approved amount is **56.41M**.
-3. The **Vehicle** category has the highest number of claims, while **Personal Protection** has the lowest.
-4. The number of claims shows an increasing trend from **2023 to 2025**.
-5. The dashboard compares requested and approved amounts across different insurance products.
-6. There are **55 total payments** and **49 distinct claims paid**.
-7. The total gross paid amount and net paid amount are both approximately **5.52M**.
-8. **Electronic Transfer** is the most commonly used payment method.
+### Observation
+The Risk Review & SLA Performance page compares average settlement days and SLA compliance across products. The dashboard provides a direct view of settlement performance relative to the configured product SLA target.
+
+### Filter / Time Scope
+Default dashboard scope using the available settlement-period Gold data.
+
+### Visual / Page
+- Page: Risk Review & SLA Performance
+- Visuals: Average Settlement Days; SLA Compliance by Product
+
+### Owning Gold Table
+`gold_claims_sla_performance_monthly`
+
+### Measure / Field
+- `avg_days_to_settlement`
+- `sla_compliance_rate`
+- `sla_target_days`
+- `product_name`
+
+### Evidence
+The Gold SLA table contains 156 settled claims, with an overall average settlement duration of approximately 20.232 days and 63 claims within SLA.
+
+### Interpretation
+Settlement performance can be used to identify products where claims operations may warrant further review of processing timelines and SLA adherence.
+
+### Limitation
+The dashboard summarizes settled claims only. It does not by itself explain the operational causes of SLA breaches or establish why a particular product performs differently.
 
 ---
 
-## 3. How the Dashboard Uses Gold Tables
+## Insight 3 — Payment Activity and Net Paid Amount
 
-| Dashboard Page            | Gold Table Used                       | Important Fields                                                                                                                      |
-| ------------------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Claims & Product Overview | `gold_claims_product_monthly_summary` | `claim_count`, `settled_claim_count`, `total_requested_amount`, `total_approved_amount`, `product_category`, `submission_month`       |
-| Claims & Product Overview | `gold_claims_sla_performance_monthly` | `within_sla_count`, `sla_breach_count`, `avg_days_to_settlement`, `settlement_month`                                                  |
-| Payment & Risk Analysis   | Gold Payment Summary                  | `payment_count`, `distinct_claims_paid`, `gross_paid_amount`, `net_paid_amount`, `reversed_amount`, `payment_method`, `payment_month` |
+### Question / Decision
+How does payment activity vary by payment method and over time?
+
+### Observation
+The Payment Performance & Risk Analytics page shows payment counts, claims paid and net paid amount by payment method, together with the monthly payment trend.
+
+### Filter / Time Scope
+Default dashboard scope using the full available payment Gold data.
+
+### Visual / Page
+- Page: Payment Performance & Risk Analytics
+- Visuals: Payments by Payment Method; Net Paid Amount by Payment Method; Monthly Net Payment Trend
+
+### Owning Gold Table
+`gold_claims_payment_monthly`
+
+### Measure / Field
+- `payment_count`
+- `distinct_claims_paid`
+- `net_paid_amount`
+- `payment_method`
+- `payment_month`
+
+### Evidence
+The validated Gold payment table contains 55 payments covering 49 distinct paid claims, with gross paid amount and net paid amount both equal to 5,519,005.09 because no reversals were recorded in the validated data.
+
+### Interpretation
+Payment-method and monthly trends provide an operational view of how claim payments are being processed and the associated paid financial volume.
+
+### Limitation
+The available Gold data contains no recorded reversals in the validated period. Payment trends should therefore not be interpreted as evidence that payment risk is absent.
 
 ---
 
-## 4. Power BI Validation
+## Reconciliation Baseline
 
-* [x] Dashboard connects to Gold outputs only.
-* [x] Filters work correctly.
-* [x] KPI totals match Gold table checks.
-* [x] Requested and approved amounts were validated.
-* [x] Claim and payment trends were checked.
-* [x] Screenshots are saved in `screenshots/`.
-* [x] Dashboard story is explainable by all students.
+The dashboard baseline was reconciled against the approved Gold tables:
+
+| Metric | Gold baseline |
+|---|---:|
+| Total Claims | 499 |
+| Settled Claims | 157 |
+| Total Requested Amount | 120,721,170.51 |
+| Total Approved Amount | 56,409,955.71 |
+| Total Payments | 55 |
+| Distinct Claims Paid | 49 |
+| Gross Paid Amount | 5,519,005.09 |
+| Net Paid Amount | 5,519,005.09 |
+| SLA Settled Claims | 156 |
+| Average Settlement Days | 20.232 |
+| Within SLA | 63 |
+
+---
+
+## Known Analytical Limitations
+
+The current approved Gold model contains four independent summary tables:
+
+- `gold_claims_product_monthly_summary`
+- `gold_claims_region_risk_monthly`
+- `gold_claims_sla_performance_monthly`
+- `gold_claims_payment_monthly`
+
+The approved Gold model does not currently provide sufficient fields for provider-level analysis, age-band analysis, coverage comparison, reserve analysis, lifecycle funnel analysis, or a streaming event feed. These areas are therefore not represented as fabricated dashboard insights.
+
+The region/risk Gold table is also a narrower matched dataset and should not be treated as equivalent to the complete 499-claim product summary.
+
+Risk-review indicators are presented as operational review indicators only. They are not fraud, denial or other definitive conclusions.
+
+---
+
+## Week 10 Boundary
+
+Streaming simulation and live-event functionality are outside the scope of this Week 9 dashboard refinement. Streaming implementation begins in Week 10.
